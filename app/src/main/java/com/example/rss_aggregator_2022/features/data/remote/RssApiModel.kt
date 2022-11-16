@@ -19,7 +19,6 @@ import org.simpleframework.xml.*
 
 @Root(name = "item", strict = false)
 data class ItemApiModel @JvmOverloads constructor(
-
     @field:Element(name = "title")
     @param:Element(name = "title")
     @field:Text(required = false)
