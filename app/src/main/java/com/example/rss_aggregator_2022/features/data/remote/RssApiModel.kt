@@ -1,4 +1,4 @@
-package com.example.rss_aggregator_2022.app.data.remote
+package com.example.rss_aggregator_2022.features.data.remote
 
 import org.simpleframework.xml.*
 
@@ -6,7 +6,6 @@ import org.simpleframework.xml.*
     data class RssApiModel @JvmOverloads constructor(
     @field:Element(name = "title")
     @param:Element(name = "title")
-
     @field:Path("channel")
     @param:Path("channel")
     var channelTitle: String? = null,
@@ -15,7 +14,6 @@ import org.simpleframework.xml.*
     @param:ElementList(name = "item", inline = true, required = false)
     @field:Path("channel")
     @param:Path("channel")
-
     var itemList: List<ItemApiModel>? = null
 )
 
