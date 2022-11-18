@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/feed"
+        android:label="@string/feed_name"
+        tools:layout="@layout/fragment_rss_feed"/>
+    <fragment
+        android:id="@+id/management"
+        android:label="@string/manager_name"
+        tools:layout="@layout/fragment_rss_management"/>
+    <fragment
+        android:id="@+id/profile"
+        android:label="@string/profile_name"
+        tools:layout="@layout/fragment_profile"/>
+
+</navigation>
