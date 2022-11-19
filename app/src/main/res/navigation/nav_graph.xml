@@ -6,15 +6,24 @@
 
     <fragment
         android:id="@+id/feed"
+        android:name="com.example.rss_aggregator_2022.features.rssfeed.RssFeedFragment"
         android:label="@string/feed_name"
-        tools:layout="@layout/fragment_rss_feed"/>
+        tools:layout="@layout/fragment_rss_feed">
+
+    </fragment>
     <fragment
         android:id="@+id/management"
         android:label="@string/manager_name"
-        tools:layout="@layout/fragment_rss_management"/>
+        android:name="com.example.rss_aggregator_2022.features.rssmanagement.RssManagementFragment"
+        tools:layout="@layout/fragment_rss_management">
+
+    </fragment>
     <fragment
         android:id="@+id/profile"
+        android:name="com.example.rss_aggregator_2022.features.profile.ProfileFragment"
         android:label="@string/profile_name"
-        tools:layout="@layout/fragment_profile"/>
+        tools:layout="@layout/fragment_profile">
+
+    </fragment>
 
 </navigation>
