@@ -11,5 +11,6 @@
         android:background="?attr/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         android:elevation="@dimen/elevation"
-        app:title="@string/manager_name"/>
+        app:title="@string/manager_name"
+        app:menu="@menu/management_menu"/>/>
 </androidx.constraintlayout.widget.ConstraintLayout>
