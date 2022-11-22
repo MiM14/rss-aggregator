@@ -9,7 +9,7 @@ class XmlLocalDataSource(private val sharedPref: SharedPreferences, private val 
     private val editor = sharedPref.edit()
 
     override fun saveRss(name: String, urlRss: String) {
-        editor.putString(name, kSerializer.toJson(Rss(name,urlRss),Rss::class.java))
+        editor.putString(urlRss, kSerializer.toJson(Rss(name,urlRss),Rss::class.java))
         editor.apply()
     }
 }
