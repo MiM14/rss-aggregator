@@ -4,12 +4,5 @@
     android:layout_height="match_parent"
     android:id="@+id/management"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!--Lo utilizo para diferenciar entre fragments, no es definitivo-->
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="@dimen/elevation"
-        app:title="@string/manager_name"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
