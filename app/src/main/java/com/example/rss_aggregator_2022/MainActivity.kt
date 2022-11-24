@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpNavigation(){
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemReselectedListener {
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
             when(it.itemId){
                 R.id.to_rss_feed_item -> findNavController(R.id.main_fragment_view).navigate(R.id.feed)
                 R.id.to_rss_manager_item-> findNavController(R.id.main_fragment_view).navigate(R.id.management)
