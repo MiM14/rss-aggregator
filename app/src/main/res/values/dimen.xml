@@ -10,6 +10,8 @@
     <dimen name="title_font_size">20sp</dimen>
     <dimen name="date_font_size">10sp</dimen>
     <dimen name="bottom_sheet_font_size">12sp</dimen>
+    <dimen name="bottom_sheet_bar">1dp</dimen>
+    <dimen name="bottom_sheet_height">210dp</dimen>
     <dimen name="bottom_sheet_font_title_size">30sp</dimen>
     <dimen name="input_label_width">180dp</dimen>
     <dimen name="input_label_height">48dp</dimen>

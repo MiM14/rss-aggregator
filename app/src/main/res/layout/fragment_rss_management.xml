@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <!--Lo utilizo para diferenciar entre fragments, no es definitivo-->
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/management_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="?attr/colorPrimary"
