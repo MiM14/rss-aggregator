@@ -14,10 +14,14 @@ class RssManagementViewModel(private val saveRssUseCase: SaveRssUseCase) : ViewM
     }
 
     fun saveRss(name: String, url: String) {
+        rssManagementPublisher.value = RssUiState(true)
+
         viewModelScope.launch(Dispatchers.IO) {
             saveRssUseCase.execute(name, url)
             rssManagementPublisher.postValue(
-                RssUiState(true)
+                RssUiState(
+                    isSuccess = true
+                )
             )
         }
     }

@@ -1,5 +1,6 @@
 package com.example.rss_aggregator_2022.features.presentation.rssmanagement
 
+import android.content.Context
 import android.content.SharedPreferences
 import com.example.rss_aggregator_2022.app.commons.GsonJSerializer
 import com.example.rss_aggregator_2022.features.data.RssDataRepository
@@ -12,8 +13,7 @@ class RssManagementFactory {
             SaveRssUseCase(
                 RssDataRepository(
                     XmlLocalDataSource(
-                        sharedPreferences,
-                        GsonJSerializer()
+                        sharedPreferences, GsonJSerializer()
                     )
                 )
             )
