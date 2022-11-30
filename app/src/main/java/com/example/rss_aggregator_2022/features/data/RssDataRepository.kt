@@ -1,9 +1,14 @@
 package com.example.rss_aggregator_2022.features.data
 
 import com.example.rss_aggregator_2022.features.data.local.LocalDataSource
+import com.example.rss_aggregator_2022.features.domain.Rss
 import com.example.rss_aggregator_2022.features.domain.RssRepository
 
-class RssDataRepository(private val localSource: LocalDataSource) :RssRepository{
+class RssDataRepository(private val localSource: LocalDataSource) : RssRepository {
     override fun createRss(name: String, urlRss: String) =
-        localSource.saveRss(name,urlRss)
+        localSource.saveRss(name, urlRss)
+
+    override fun getSourceRss(): List<Rss> =
+        localSource.getUserRssList()
+
 }
