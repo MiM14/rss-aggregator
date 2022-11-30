@@ -6,7 +6,7 @@
     app:startDestination="@id/feed">
     <action
         android:id="@+id/startFeed"
-        app:destination="@+id/feed" />
+        app:destination="@+id/feed"/>
     <action
         android:id="@+id/startManagement"
         app:destination="@+id/management" />

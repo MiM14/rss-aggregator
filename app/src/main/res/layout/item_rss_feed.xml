@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/card_vertical_size"
+    android:layout_height="@dimen/news_card_vertical_size"
     android:layout_margin="@dimen/horizontal_spacing"
     app:cardCornerRadius="@dimen/horizontal_spacing">
 
@@ -48,7 +48,7 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/horizontal_spacing"
+            android:layout_margin="@dimen/margin"
             android:textSize="@dimen/date_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
