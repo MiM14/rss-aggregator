@@ -4,6 +4,6 @@
     <item
         android:id="@+id/to_user_form"
         android:icon="@drawable/ic_plus"
-        android:title="@string/Add_option"
+        android:title="@string/add_option"
         app:showAsAction="ifRoom" />
 </menu>

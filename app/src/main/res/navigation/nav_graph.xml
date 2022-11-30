@@ -4,15 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/feed">
-    <action
-        android:id="@+id/startFeed"
-        app:destination="@+id/feed" />
-    <action
-        android:id="@+id/startManagement"
-        app:destination="@+id/management" />
-    <action
-        android:id="@+id/startProfile"
-        app:destination="@+id/profile" />
 
     <fragment
         android:id="@+id/feed"
