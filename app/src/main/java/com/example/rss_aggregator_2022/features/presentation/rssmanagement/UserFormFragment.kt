@@ -2,26 +2,24 @@ package com.example.rss_aggregator_2022.features.presentation.rssmanagement
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.example.rss_aggregator_2022.R
-import com.example.rss_aggregator_2022.app.commons.GsonJSerializer
 import com.example.rss_aggregator_2022.databinding.UserFormViewBinding
-import com.example.rss_aggregator_2022.features.data.local.xml.XmlLocalDataSource
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class UserFormFragment : BottomSheetDialogFragment() {
-
     private var binding: UserFormViewBinding? = null
-    private var viewModel: RssManagementViewModel? = null
+
+    private val viewModel by lazy {
+        this.activity?.let {
+            RssManagementFactory().saveUserRss(it.getPreferences(Context.MODE_PRIVATE))
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,20 +31,12 @@ class UserFormFragment : BottomSheetDialogFragment() {
         return binding?.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = RssManagementFactory().saveUserRss(
-            requireContext().getSharedPreferences("", Context.MODE_PRIVATE)
-        )
-    }
-
     private fun setupView() {
         binding?.apply {
-            bottomsheetButtonCancel.setOnClickListener {
+            bottomsheetButtonCancel.setOnClickListener() {
                 findNavController().navigateUp()
             }
-
-            bottomsheetButtonSave.setOnClickListener {
+            bottomsheetButtonSave.setOnClickListener() {
                 viewModel?.saveRss(
                     inputName.text.toString(),
                     inputUrl.text.toString()
@@ -57,12 +47,9 @@ class UserFormFragment : BottomSheetDialogFragment() {
             }
         }
     }
-
-    private fun showSnackBar() {
-        Snackbar.make(
-            (requireActivity()).findViewById<ViewGroup>(R.id.main_fragment_view),
-            R.string.added_rss_source,
-            BaseTransientBottomBar.LENGTH_SHORT
-        ).show()
+    private fun showSnackBar(){
+        Snackbar.make((requireActivity()).findViewById<ViewGroup>(R.id.main_fragment_view),
+        R.string.added_record,
+        BaseTransientBottomBar.LENGTH_SHORT).show()
     }
 }
