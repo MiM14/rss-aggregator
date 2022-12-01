@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="elevation">4dp</dimen>
+    <dimen name="zero_size">0dp</dimen>
+    <dimen name="card_vertical_size">160dp</dimen>
+    <dimen name="image_big_side">140dp</dimen>
+    <dimen name="image_small_side">120dp</dimen>
+    <dimen name="horizontal_spacing">10dp</dimen>
+    <dimen name="margin">5dp</dimen>
+    <dimen name="title_font_size">20sp</dimen>
+    <dimen name="date_font_size">10sp</dimen>
+</resources>
