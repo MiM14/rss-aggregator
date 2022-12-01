@@ -5,6 +5,15 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/feed">
 
+    <action
+        android:id="@+id/to_Feed"
+        app:destination="@+id/feed" />
+    <action
+        android:id="@+id/to_management"
+        app:destination="@+id/management" />
+    <action
+        android:id="@+id/to_profile"
+        app:destination="@+id/profile" />
     <fragment
         android:id="@+id/feed"
         android:name="com.example.rss_aggregator_2022.features.presentation.rssfeed.RssFeedFragment"
