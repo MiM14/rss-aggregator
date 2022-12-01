@@ -60,7 +60,7 @@ class UserFormFragment : BottomSheetDialogFragment() {
         if(isSuccess) {
             R.string.added_record
         }else{
-            R.string.added_record
+            R.string.error_added_record
         },
         BaseTransientBottomBar.LENGTH_SHORT).show()
     }
