@@ -1,4 +1,4 @@
-package com.example.rss_aggregator_2022.app.commons
+/*package com.example.rss_aggregator_2022.app.commons
 
 import com.google.gson.Gson
 
@@ -19,3 +19,4 @@ class GsonJSerializer : KSerializer {
         return gson.toJson(obj, classObj)
     }
 }
+*/
