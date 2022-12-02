@@ -1,6 +1,9 @@
 package com.example.rss_aggregator_2022.features.data.local.xml
 
 import android.content.SharedPreferences
+import com.example.rss_aggregator_2022.app.domain.ErrorApp
+import com.example.rss_aggregator_2022.app.functional.Either
+import com.example.rss_aggregator_2022.app.functional.right
 import com.example.rss_aggregator_2022.features.data.local.LocalDataSource
 import com.example.rss_aggregator_2022.features.domain.Rss
 
@@ -12,11 +15,11 @@ class XmlLocalDataSource(private val sharedPref: SharedPreferences): LocalDataSo
         editor.apply()
     }
 
-    override fun getUserRssList(): List<Rss> {
+    override suspend fun getUserRssList(): Either<ErrorApp,List<Rss>> {
         val rssFeed = mutableListOf<Rss>()
         sharedPref.all.map{
-            rssFeed.add(Rss(it.value.toString(),sharedPref.getString(it.key,it.value.toString())!!))
+            rssFeed.add(Rss(it.value.toString(),it.key))
         }
-        return rssFeed
+        return rssFeed.right()
     }
 }
