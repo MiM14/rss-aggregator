@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="elevation">4dp</dimen>
-    <dimen name="card_vertical_size">160dp</dimen>
+    <dimen name="news_card_vertical_size">160dp</dimen>
     <dimen name="image_big_side">140dp</dimen>
     <dimen name="image_small_side">120dp</dimen>
     <dimen name="horizontal_spacing">8dp</dimen>
