@@ -1,4 +1,4 @@
-package com.example.rss_aggregator_2022.features.presentation.rssmanagement
+package com.example.rss_aggregator_2022.features.rssmanagement
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,24 +7,21 @@ import com.example.rss_aggregator_2022.features.domain.SaveRssUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RssManagementViewModel(private val saveRssUseCase: SaveRssUseCase) : ViewModel() {
+class UserFormViewModel(private val saveRssUseCase: SaveRssUseCase) : ViewModel() {
 
-    private val rssManagementPublisher: MutableLiveData<RssUiState> by lazy {
-        MutableLiveData<RssUiState>()
+    val movieFeedPublisher: MutableLiveData<FormUiState> by lazy {
+        MutableLiveData<FormUiState>()
     }
-
     fun saveRss(name: String, url: String) {
-        rssManagementPublisher.value = RssUiState(true)
-
         viewModelScope.launch(Dispatchers.IO) {
             saveRssUseCase.execute(name, url)
-            rssManagementPublisher.postValue(
-                RssUiState(
+            movieFeedPublisher.postValue(
+                FormUiState(
                     isSuccess = true
                 )
             )
         }
     }
 
-    data class RssUiState(val isSuccess: Boolean = false)
+    data class FormUiState(val isSuccess: Boolean = false)
 }

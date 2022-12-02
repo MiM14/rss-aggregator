@@ -2,15 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/profile">
-    <!--Lo utilizo para diferenciar entre fragments, no es definitivo-->
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="@dimen/elevation"
-        app:title="@string/profile_name"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

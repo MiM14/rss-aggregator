@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/description"
-            android:layout_width="@dimen/zero_size"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="4"

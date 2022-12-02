@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.rss_aggregator_2022.databinding.ActivityMainBinding
+import com.example.rss_aggregator_2022.features.rssfeed.RssFeedFragmentDirections
+import com.example.rss_aggregator_2022.features.rssmanagement.RssManagementFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -26,12 +28,21 @@ class MainActivity : AppCompatActivity() {
     private fun setUpNavigation(){
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
             when(it.itemId){
-                R.id.to_rss_feed_item -> findNavController(R.id.main_fragment_view).navigate(R.id.feed)
-                R.id.to_rss_manager_item-> findNavController(R.id.main_fragment_view).navigate(R.id.management)
-                R.id.to_your_profile_item-> findNavController(R.id.main_fragment_view).navigate(R.id.profile)
+                R.id.to_rss_feed_item -> navigateToFeed()
+                R.id.to_rss_manager_item-> navigateToManagement()
+                R.id.to_your_profile_item-> navigateToProfile()
             }
             true
         }
     }
-}
+    private fun navigateToFeed(){
+        findNavController(R.id.main_fragment_view).navigate(NavGraphDirections.toFeed())
+    }
+    private fun navigateToManagement(){
+        findNavController(R.id.main_fragment_view).navigate(NavGraphDirections.toManagement())
+    }
+    private fun navigateToProfile(){
+        findNavController(R.id.main_fragment_view).navigate(NavGraphDirections.toProfile())
+    }
 
+}
