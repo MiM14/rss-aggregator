@@ -1,4 +1,4 @@
-package com.example.rss_aggregator_2022.features.presentation.rssmanagement
+package com.example.rss_aggregator_2022.features.rssmanagement
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.rss_aggregator_2022.R
 import com.example.rss_aggregator_2022.databinding.FragmentRssManagementBinding
-import com.example.rss_aggregator_2022.features.presentation.rssmanagement.RssManagementFragmentDirections.Companion.actionManagementToUserForm
+import com.example.rss_aggregator_2022.features.rssmanagement.RssManagementFragmentDirections.Companion.actionManagementToUserForm
 
 class RssManagementFragment : Fragment() {
     var binding: FragmentRssManagementBinding? = null
