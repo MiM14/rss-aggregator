@@ -28,12 +28,21 @@ class MainActivity : AppCompatActivity() {
     private fun setUpNavigation(){
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
             when(it.itemId){
-                R.id.to_rss_feed_item -> findNavController(R.id.main_fragment_view).navigate(NavGraphDirections.toFeed())
-                R.id.to_rss_manager_item-> findNavController(R.id.main_fragment_view).navigate(NavGraphDirections.toManagement())
-                R.id.to_your_profile_item-> findNavController(R.id.main_fragment_view).navigate(NavGraphDirections.toProfile())
+                R.id.to_rss_feed_item -> navigateToFeed()
+                R.id.to_rss_manager_item-> navigateToManagement()
+                R.id.to_your_profile_item-> navigateToProfile()
             }
             true
         }
     }
-}
+    private fun navigateToFeed(){
+        findNavController(R.id.main_fragment_view).navigate(NavGraphDirections.toFeed())
+    }
+    private fun navigateToManagement(){
+        findNavController(R.id.main_fragment_view).navigate(NavGraphDirections.toManagement())
+    }
+    private fun navigateToProfile(){
+        findNavController(R.id.main_fragment_view).navigate(NavGraphDirections.toProfile())
+    }
 
+}
