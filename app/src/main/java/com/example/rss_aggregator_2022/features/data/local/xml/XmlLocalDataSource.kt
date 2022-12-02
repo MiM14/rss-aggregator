@@ -2,8 +2,9 @@ package com.example.rss_aggregator_2022.features.data.local.xml
 
 import android.content.SharedPreferences
 import com.example.rss_aggregator_2022.features.data.local.LocalDataSource
+import com.example.rss_aggregator_2022.features.domain.Rss
 
-class XmlLocalDataSource(sharedPref: SharedPreferences): LocalDataSource {
+class XmlLocalDataSource(private val sharedPref: SharedPreferences): LocalDataSource {
     private val editor = sharedPref.edit()
 
     override fun saveRss(name: String, urlRss: String) {

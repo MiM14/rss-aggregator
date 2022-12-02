@@ -11,7 +11,7 @@ class RssManagementFactory {
             SaveRssUseCase(
                 RssDataRepository(
                     XmlLocalDataSource(
-                        sharedPreferences, //GsonJSerializer()
+                        sharedPreferences
                     )
                 )
             )
