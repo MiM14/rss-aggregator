@@ -53,7 +53,7 @@ class UserFormFragment : BottomSheetDialogFragment() {
             Observer<UserFormViewModel.FormUiState>{
                 showSnackBar(it.isSuccess)
             }
-        viewModel?.RssPublisher?.observe(viewLifecycleOwner,userFormSubscriber)
+        viewModel?.rssSetterPublisher?.observe(viewLifecycleOwner,userFormSubscriber)
     }
     private fun showSnackBar(isSuccess:Boolean){
         Snackbar.make((requireActivity()).findViewById<ViewGroup>(R.id.main_fragment_view),

@@ -9,13 +9,13 @@ import kotlinx.coroutines.launch
 
 class UserFormViewModel(private val saveRssUseCase: SaveRssUseCase) : ViewModel() {
 
-    val RssPublisher: MutableLiveData<FormUiState> by lazy {
+    val rssSetterPublisher: MutableLiveData<FormUiState> by lazy {
         MutableLiveData<FormUiState>()
     }
     fun saveRss(name: String, url: String) {
         viewModelScope.launch(Dispatchers.IO) {
             saveRssUseCase.execute(name, url)
-            RssPublisher.postValue(
+            rssSetterPublisher.postValue(
                 FormUiState(
                     isSuccess = true
                 )
