@@ -1,6 +1,5 @@
 package com.example.rss_aggregator_2022.features.rssmanagement
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 class UserFormFragment : BottomSheetDialogFragment() {
     private var binding: FragmentUserFormBinding? = null
 
-    private val viewModel by lazy {
-        this.activity?.let {
-            RssManagementFactory().injectRssManagementViewModel(it.getPreferences(Context.MODE_PRIVATE))
-        }
-    }
+    private lateinit var viewModel : UserFormViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +23,7 @@ class UserFormFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUserFormBinding.inflate(inflater)
+        viewModel = RssManagementFactory().injectRssManagementViewModel(this.requireContext())
         setupView()
         return binding?.root
     }
@@ -38,22 +34,22 @@ class UserFormFragment : BottomSheetDialogFragment() {
                 findNavController().navigateUp()
             }
             bottomsheetButtonSave.setOnClickListener() {
-                viewModel?.saveRss(
+                viewModel.saveRss(
                     inputName.text.toString(),
                     inputUrl.text.toString()
                 )
                 findNavController().navigateUp()
-                saveCheck()
+                setupObservers()
 
             }
         }
     }
-    private fun saveCheck(){
+    private fun setupObservers(){
         val userFormSubscriber=
             Observer<UserFormViewModel.FormUiState>{
                 showSnackBar(it.isSuccess)
             }
-        viewModel?.rssSetterPublisher?.observe(viewLifecycleOwner,userFormSubscriber)
+        viewModel.formUiState.observe(this,userFormSubscriber)
     }
     private fun showSnackBar(isSuccess:Boolean){
         Snackbar.make((requireActivity()).findViewById<ViewGroup>(R.id.main_fragment_view),
