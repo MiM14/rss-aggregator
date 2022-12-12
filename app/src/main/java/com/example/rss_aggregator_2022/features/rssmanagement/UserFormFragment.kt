@@ -9,13 +9,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.rss_aggregator_2022.R
 import com.example.rss_aggregator_2022.databinding.FragmentUserFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
 class UserFormFragment : BottomSheetDialogFragment() {
     private var binding: FragmentUserFormBinding? = null
 
-    private lateinit var viewModel : UserFormViewModel
+    private lateinit var viewModel: UserFormViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,9 +22,21 @@ class UserFormFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUserFormBinding.inflate(inflater)
-        viewModel = RssManagementFactory().injectRssManagementViewModel(this.requireContext())
         setupView()
         return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = RssManagementFactory().injectRssManagementViewModel(this.requireContext())
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        val userFormSubscriber = Observer<UserFormViewModel.FormUiState> {
+            showSnackBar(it.isSuccess)
+        }
+        viewModel.formUiState.observe(this, userFormSubscriber)
     }
 
     private fun setupView() {
@@ -39,25 +50,19 @@ class UserFormFragment : BottomSheetDialogFragment() {
                     inputUrl.text.toString()
                 )
                 findNavController().navigateUp()
-                setupObservers()
-
             }
         }
     }
-    private fun setupObservers(){
-        val userFormSubscriber=
-            Observer<UserFormViewModel.FormUiState>{
-                showSnackBar(it.isSuccess)
-            }
-        viewModel.formUiState.observe(this,userFormSubscriber)
-    }
-    private fun showSnackBar(isSuccess:Boolean){
-        Snackbar.make((requireActivity()).findViewById<ViewGroup>(R.id.main_fragment_view),
-        if(isSuccess) {
-            R.string.added_record
-        }else{
-            R.string.error_added_record
-        },
-        BaseTransientBottomBar.LENGTH_SHORT).show()
+
+    private fun showSnackBar(isSuccess: Boolean) {
+        Snackbar.make(
+            (requireActivity()).findViewById<ViewGroup>(R.id.main_fragment_view),
+            if (isSuccess) {
+                R.string.added_record
+            } else {
+                R.string.error_added_record
+            },
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 }
