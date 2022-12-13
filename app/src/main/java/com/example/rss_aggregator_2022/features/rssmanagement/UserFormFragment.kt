@@ -28,7 +28,7 @@ class UserFormFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = RssManagementFactory().injectRssManagementViewModel(this.requireContext())
+        viewModel = RssManagementFactory().injectUserFormViewModel(this.requireContext())
         setupObservers()
     }
 
