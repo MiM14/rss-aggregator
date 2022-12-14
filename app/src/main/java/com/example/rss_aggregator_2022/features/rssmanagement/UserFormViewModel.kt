@@ -9,9 +9,7 @@ import kotlinx.coroutines.launch
 
 class UserFormViewModel(private val saveRssUseCase: SaveRssUseCase) : ViewModel() {
 
-    private val _formUiState: MutableLiveData<FormUiState> by lazy {
-        MutableLiveData((FormUiState()))
-    }
+    private val _formUiState: MutableLiveData<FormUiState> = MutableLiveData()
     val formUiState: MutableLiveData<FormUiState> = _formUiState
 
     fun saveRss(name: String, url: String) {
