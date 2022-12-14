@@ -35,6 +35,7 @@ class UserFormFragment : BottomSheetDialogFragment() {
     private fun setupObservers() {
         val userFormSubscriber = Observer<UserFormViewModel.FormUiState> {
             showSnackBar(it.isSuccess)
+            findNavController().navigateUp()
         }
         viewModel.formUiState.observe(this, userFormSubscriber)
     }
@@ -49,7 +50,6 @@ class UserFormFragment : BottomSheetDialogFragment() {
                     inputName.text.toString(),
                     inputUrl.text.toString()
                 )
-                findNavController().navigateUp()
             }
         }
     }
