@@ -13,4 +13,8 @@ class RssDataRepository(private val localSource: LocalDataSource) :RssRepository
 
     override suspend fun getSourceRss(): Flow<Either<ErrorApp, List<Rss>>> =
         localSource.obtain()
+
+    override suspend fun deleteRss(urlRss: String) {
+        localSource.delete(urlRss)
+    }
 }
