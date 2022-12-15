@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface RssRepository {
     suspend fun createRss(name:String, urlRss:String)
     suspend fun getSourceRss(): Flow<Either<ErrorApp, List<Rss>>>
+    suspend fun deleteRss(urlRss: String)
 }
