@@ -17,15 +17,15 @@ class RssManagementFactory {
         )
     }
 
-    fun injectUserFormViewModel(context: Context): UserFormViewModel {
-        return UserFormViewModel(
-            SaveRssUseCase(injectRepository(context))
-        )
-    }
-
     fun injectRssManagementViewModel(context: Context): RssManagementViewModel {
         return RssManagementViewModel(
             GetSourceRssUseCase(injectRepository(context))
+        )
+    }
+
+    fun injectUserFormViewModel(context: Context): UserFormViewModel {
+        return UserFormViewModel(
+            SaveRssUseCase(injectRepository(context))
         )
     }
 }

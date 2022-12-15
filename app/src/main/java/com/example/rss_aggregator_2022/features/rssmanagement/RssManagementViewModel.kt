@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class RssManagementViewModel(private val getSourceRssUseCase: GetSourceRssUseCase) : ViewModel() {
-    private val _managerUiState = MutableLiveData(ManagerUiState())
+    private val _managerUiState: MutableLiveData<ManagerUiState> = MutableLiveData()
     val managerUiState = _managerUiState
 
     fun obtainRss() {
@@ -30,5 +30,5 @@ class RssManagementViewModel(private val getSourceRssUseCase: GetSourceRssUseCas
         }
     }
 
-    data class ManagerUiState(val managerFeed: List<Rss>? = null, val error: ErrorApp? = null)
+    data class ManagerUiState(val managerFeed: List<Rss> = emptyList(), val error: ErrorApp? = null)
 }

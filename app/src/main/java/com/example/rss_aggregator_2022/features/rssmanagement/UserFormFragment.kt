@@ -14,7 +14,9 @@ import com.google.android.material.snackbar.Snackbar
 class UserFormFragment : BottomSheetDialogFragment() {
     private var binding: FragmentUserFormBinding? = null
 
-    private lateinit var viewModel: UserFormViewModel
+    private val viewModel by lazy {
+        RssManagementFactory().injectUserFormViewModel(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,20 +26,6 @@ class UserFormFragment : BottomSheetDialogFragment() {
         binding = FragmentUserFormBinding.inflate(inflater)
         setupView()
         return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = RssManagementFactory().injectUserFormViewModel(this.requireContext())
-        setupObservers()
-    }
-
-    private fun setupObservers() {
-        val userFormSubscriber = Observer<UserFormViewModel.FormUiState> {
-            showSnackBar(it.isSuccess)
-            findNavController().navigateUp()
-        }
-        viewModel.formUiState.observe(this, userFormSubscriber)
     }
 
     private fun setupView() {
@@ -52,6 +40,19 @@ class UserFormFragment : BottomSheetDialogFragment() {
                 )
             }
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        val userFormSubscriber = Observer<UserFormViewModel.FormUiState> {
+            showSnackBar(it.isSuccess)
+            findNavController().navigateUp()
+        }
+        viewModel.formUiState.observe(this, userFormSubscriber)
     }
 
     private fun showSnackBar(isSuccess: Boolean) {
