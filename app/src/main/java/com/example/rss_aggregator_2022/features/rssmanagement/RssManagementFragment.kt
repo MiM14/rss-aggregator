@@ -27,12 +27,10 @@ class RssManagementFragment : Fragment() {
         binding?.managementToolbar?.apply {
             title = getString(R.string.manager_name)
             setOnMenuItemClickListener {
-                when (it.itemId) {
-                    R.id.to_user_form -> {
+                if (R.id.to_user_form == it.itemId) {
                         findNavController().navigate(
                             actionManagementToUserForm()
                         )
-                    }
                 }
                 true
             }
