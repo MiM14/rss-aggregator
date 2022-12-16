@@ -11,5 +11,8 @@ class RssManagerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(model: Rss) {
         binding.rssSourceName.text = model.name
         binding.rssSourceUrl.text = model.urlRss
+        binding.deleteIcon.setOnClickListener {
+            
+        }
     }
 }

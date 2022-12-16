@@ -32,13 +32,6 @@ class RssManagementFragment : Fragment() {
         return binding?.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupObservers()
-        viewModel.obtainRss()
-
-    }
-
     private fun setupView() {
         binding?.apply {
             rssSourceFeed.apply {
@@ -49,6 +42,7 @@ class RssManagementFragment : Fragment() {
                         LinearLayoutManager.VERTICAL,
                         false
                     )
+                managerAdapter
             }
             managementToolbar.apply {
                 title = getString(R.string.manager_name)
@@ -62,6 +56,12 @@ class RssManagementFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupObservers()
+        viewModel.obtainRss()
     }
 
     private fun setupObservers() {
