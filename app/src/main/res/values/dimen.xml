@@ -19,5 +19,5 @@
     <dimen name="user_form_button_size">120dp</dimen>
     <dimen name="rss_source_card_vertical_size">120dp</dimen>
     <dimen name="rss_source_icon">80dp</dimen>
-    <dimen name="rss_source_delete">24dp</dimen>
+    <dimen name="rss_source_delete">32dp</dimen>
 </resources>

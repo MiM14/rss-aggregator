@@ -11,4 +11,6 @@
     <string name="button_add_value">Guardar</string>
     <string name="added_record">Registro añadido correctamente</string>
     <string name="error_added_record">Registro no se ha podido añadir correctamente</string>
+    <string name="name_label">Name:</string>
+    <string name="url_label">Url:</string>
 </resources>

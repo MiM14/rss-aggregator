@@ -15,9 +15,11 @@ import com.example.rss_aggregator_2022.features.rssmanagement.adapter.RssManager
 import com.google.android.material.snackbar.Snackbar
 
 class RssManagementFragment : Fragment() {
-    var binding: FragmentRssManagementBinding? = null
+    private var binding: FragmentRssManagementBinding? = null
     private val managerAdapter = RssManagerAdapter()
-    private lateinit var viewModel: RssManagementViewModel
+    private val viewModel by lazy {
+        RssManagementFactory().injectRssManagementViewModel(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,13 +27,17 @@ class RssManagementFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRssManagementBinding.inflate(inflater)
-        viewModel = RssManagementFactory().injectRssManagementViewModel(this.requireContext())
         setupView()
-        setupObservers()
-        viewModel.obtainRss()
+
         return binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupObservers()
+        viewModel.obtainRss()
+
+    }
 
     private fun setupView() {
         binding?.apply {
@@ -47,12 +53,10 @@ class RssManagementFragment : Fragment() {
             managementToolbar.apply {
                 title = getString(R.string.manager_name)
                 setOnMenuItemClickListener {
-                    when (it.itemId) {
-                        R.id.to_user_form -> {
-                            findNavController().navigate(
-                                actionManagementToUserForm()
-                            )
-                        }
+                    if (R.id.to_user_form == it.itemId) {
+                        findNavController().navigate(
+                            actionManagementToUserForm()
+                        )
                     }
                     true
                 }

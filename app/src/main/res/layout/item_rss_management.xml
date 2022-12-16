@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/label_name"
-            android:text="Name:"
+            android:text="@string/name_label"
             app:layout_constraintTop_toTopOf="@+id/rss_item_image"
             app:layout_constraintStart_toEndOf="@+id/rss_item_image"
             android:layout_margin="@dimen/margin"/>
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/label_url"
-            android:text="Rss Url:"
+            android:text="@string/url_label"
             app:layout_constraintTop_toBottomOf="@+id/label_name"
             app:layout_constraintStart_toStartOf="@+id/label_name"/>
         <TextView
@@ -51,6 +51,7 @@
             app:layout_constraintStart_toEndOf="@+id/label_url"
             app:layout_constraintTop_toTopOf="@id/label_url"/>
         <ImageView
+            android:id="@+id/delete_icon"
             android:layout_width="@dimen/rss_source_delete"
             android:layout_height="@dimen/rss_source_delete"
             android:src="@drawable/ic_delete_bin"
