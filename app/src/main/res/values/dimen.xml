@@ -4,8 +4,16 @@
     <dimen name="card_vertical_size">160dp</dimen>
     <dimen name="image_big_side">140dp</dimen>
     <dimen name="image_small_side">120dp</dimen>
-    <dimen name="horizontal_spacing">10dp</dimen>
-    <dimen name="margin">5dp</dimen>
+    <dimen name="horizontal_spacing">8dp</dimen>
+    <dimen name="vertical_spacing">32dp</dimen>
+    <dimen name="margin">8dp</dimen>
     <dimen name="title_font_size">20sp</dimen>
     <dimen name="date_font_size">10sp</dimen>
+    <dimen name="user_form_font_size">16sp</dimen>
+    <dimen name="user_form_bar">1dp</dimen>
+    <dimen name="user_form_font_title_size">32sp</dimen>
+    <dimen name="input_label_width">180dp</dimen>
+    <dimen name="input_label_height">60dp</dimen>
+    <dimen name="user_form_bottom_padding">72dp</dimen>
+    <dimen name="user_form_button_size">120dp</dimen>
 </resources>
