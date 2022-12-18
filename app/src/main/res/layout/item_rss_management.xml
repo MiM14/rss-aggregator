@@ -60,8 +60,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:clickable="true"
-            app:tint="?colorError"
-            android:focusable="true" />
+            app:tint="?colorError" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

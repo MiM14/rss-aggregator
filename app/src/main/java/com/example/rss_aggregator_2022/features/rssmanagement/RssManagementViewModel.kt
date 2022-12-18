@@ -37,13 +37,11 @@ class RssManagementViewModel(
     fun delete(urlRss: String) {
         viewModelScope.launch(Dispatchers.IO) {
             deleteSourceRssUseCase(urlRss)
-            _managerUiState.postValue(ManagerUiState(isSuccess = true))
         }
     }
 
     data class ManagerUiState(
         val managerFeed: List<Rss> = emptyList(),
-        val error: ErrorApp? = null,
-        val isSuccess: Boolean = false
+        val error: ErrorApp? = null
     )
 }
