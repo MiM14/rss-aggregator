@@ -73,13 +73,11 @@ class RssManagementFragment : Fragment() {
         val managerRssSubscriber = Observer<RssManagementViewModel.ManagerUiState> { uiState ->
             if (uiState.error != null) {
                 uiState.error.let {
-                    uiState.error.let {
                         Snackbar.make(
                             (requireActivity()).findViewById<ViewGroup>(R.id.main_fragment_view),
                             R.string.unk_error,
                             Snackbar.LENGTH_LONG
                         )
-                    }
                 }
             } else {
                 managerAdapter.setDataItems(uiState.managerFeed)

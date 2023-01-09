@@ -3,55 +3,43 @@ package com.example.rss_aggregator_2022.features.data.remote
 import org.simpleframework.xml.*
 
 @Root(name = "rss", strict = false)
-    data class RssApiModel @JvmOverloads constructor(
-    @field:Element(name = "title")
-    @param:Element(name = "title")
-    @field:Path("channel")
-    @param:Path("channel")
-    var channelTitle: String? = null,
-
+data class RssApiModel @JvmOverloads constructor(
     @field:ElementList(name = "item", inline = true, required = false)
     @param:ElementList(name = "item", inline = true, required = false)
     @field:Path("channel")
     @param:Path("channel")
-    var itemList: List<ItemApiModel>? = null
+    var items: List<ItemApiModel>? = null
 )
 
 @Root(name = "item", strict = false)
 data class ItemApiModel @JvmOverloads constructor(
-    @field:Element(name = "title")
-    @param:Element(name = "title")
+    @field:Path("title")
+    @param:Path("title")
     @field:Text(required = false)
     @param:Text(required = false)
     var title: String? = null,
 
-    @field:Element(name = "description")
-    @param:Element(name = "description")
+    @field:Path("description")
+    @param:Path("description")
     @field:Text(required = false)
     @param:Text(required = false)
     var description: String? = null,
 
-    @field:Element(name = "link")
-    @param:Element(name = "link")
+    @field:Path("link")
+    @param:Path("link")
     @field:Text(required = false)
     @param:Text(required = false)
     var link: String? = null,
 
-    @field:Element(name = "pubDate")
-    @param:Element(name = "pubDate")
+    @field:Path("pubDate")
+    @param:Path("pubDate")
     @field:Text(required = false)
     @param:Text(required = false)
     var pubDate: String? = null,
 
-    @field:Element(name = "media:content")
-    @param:Element(name = "media:content")
+    @field:Path("dc:creator")
+    @param:Path("dc:creator")
     @field:Text(required = false)
     @param:Text(required = false)
-    var content: String? = null,
-
-    @field:Element(name = "dc:creator")
-    @param:Element(name = "dc:creator")
-    @field:Text(required = false)
-    @param:Text(required = false)
-    var creator: String? = null
+    var creator: String? = null,
 )

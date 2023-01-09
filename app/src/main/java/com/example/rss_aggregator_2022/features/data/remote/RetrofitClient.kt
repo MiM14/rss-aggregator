@@ -18,6 +18,7 @@ class RetrofitClient{
     private fun buildApiClient(): Retrofit{
         return Retrofit.Builder()
             .addConverterFactory(SimpleXmlConverterFactory.create())
+            .baseUrl("https://www.google.es")
             .build()
     }
     suspend fun getRss(url: String): Either<ErrorApp, RssApiModel> {
