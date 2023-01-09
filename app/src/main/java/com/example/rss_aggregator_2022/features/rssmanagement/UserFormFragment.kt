@@ -1,6 +1,5 @@
 package com.example.rss_aggregator_2022.features.rssmanagement
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,17 +9,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.rss_aggregator_2022.R
 import com.example.rss_aggregator_2022.databinding.FragmentUserFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
 class UserFormFragment : BottomSheetDialogFragment() {
     private var binding: FragmentUserFormBinding? = null
 
-    private val viewModel by lazy {
-        this.activity?.let {
-            RssManagementFactory().injectRssManagementViewModel(it.getPreferences(Context.MODE_PRIVATE))
-        }
-    }
+    private lateinit var viewModel: UserFormViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,36 +26,43 @@ class UserFormFragment : BottomSheetDialogFragment() {
         return binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = RssManagementFactory().injectRssManagementViewModel(this.requireContext())
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        val userFormSubscriber = Observer<UserFormViewModel.FormUiState> {
+            showSnackBar(it.isSuccess)
+            findNavController().navigateUp()
+        }
+        viewModel.formUiState.observe(this, userFormSubscriber)
+    }
+
     private fun setupView() {
         binding?.apply {
             bottomsheetButtonCancel.setOnClickListener() {
                 findNavController().navigateUp()
             }
             bottomsheetButtonSave.setOnClickListener() {
-                viewModel?.saveRss(
+                viewModel.saveRss(
                     inputName.text.toString(),
                     inputUrl.text.toString()
                 )
-                findNavController().navigateUp()
-                saveCheck()
-
             }
         }
     }
-    private fun saveCheck(){
-        val userFormSubscriber=
-            Observer<UserFormViewModel.FormUiState>{
-                showSnackBar(it.isSuccess)
-            }
-        viewModel?.rssSetterPublisher?.observe(viewLifecycleOwner,userFormSubscriber)
-    }
-    private fun showSnackBar(isSuccess:Boolean){
-        Snackbar.make((requireActivity()).findViewById<ViewGroup>(R.id.main_fragment_view),
-        if(isSuccess) {
-            R.string.added_record
-        }else{
-            R.string.error_added_record
-        },
-        BaseTransientBottomBar.LENGTH_SHORT).show()
+
+    private fun showSnackBar(isSuccess: Boolean) {
+        Snackbar.make(
+            (requireActivity()).findViewById<ViewGroup>(R.id.main_fragment_view),
+            if (isSuccess) {
+                R.string.added_record
+            } else {
+                R.string.error_added_record
+            },
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 }
