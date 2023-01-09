@@ -20,7 +20,7 @@ class DSLocalDataSource(private val context: Context, private val serializer: KS
 
     override suspend fun saveRss(name: String, urlRss: String) {
         context.dataStore.edit {
-                it[stringPreferencesKey(urlRss)] = serializer.toJson(Rss(urlRss, name))
+            it[stringPreferencesKey(urlRss)] = serializer.toJson(Rss(urlRss, name))
         }
     }
 
@@ -32,5 +32,9 @@ class DSLocalDataSource(private val context: Context, private val serializer: KS
         }
     }
 
-
+    override suspend fun delete(urlRss: String) {
+        context.dataStore.edit {
+            it.remove(stringPreferencesKey(urlRss))
+        }
+    }
 }

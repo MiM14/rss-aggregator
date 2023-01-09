@@ -18,4 +18,8 @@ class XmlLocalDataSource(sharedPref: SharedPreferences): LocalDataSource {
     override fun obtain(): Flow<Either<ErrorApp, List<Rss>>> {
         TODO("Not yet implemented")
     }
+
+    override suspend fun delete(urlRss: String) {
+        TODO("Not yet implemented")
+    }
 }

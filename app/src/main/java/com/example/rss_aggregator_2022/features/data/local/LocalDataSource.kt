@@ -8,5 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface LocalDataSource {
     suspend fun saveRss(name:String, urlRss:String)
     fun obtain() : Flow<Either<ErrorApp,List<Rss>>>
+    suspend fun delete(urlRss: String)
 
 }
